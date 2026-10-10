@@ -4,6 +4,7 @@
  */
 const SITE = {
   votingBoothUrl: "https://vote.mussaelections.com/auth/voter-login/",
+  receiptLookupUrl: "https://vote.mussaelections.com/vote/receipt/",
   social: {
     facebook: "#",
     instagram: "#",
@@ -23,16 +24,23 @@ const SOCIAL_LABELS = {
   youtube: "YouTube",
 };
 
-function applyVotingBoothLinks() {
-  document.querySelectorAll("[data-voting-booth]").forEach((el) => {
-    if (el.tagName === "A") {
-      el.setAttribute("href", SITE.votingBoothUrl);
-      if (SITE.votingBoothUrl !== "#") {
-        el.setAttribute("target", "_blank");
-        el.setAttribute("rel", "noopener noreferrer");
-      }
+function applyExternalSiteLink(selector, url) {
+  document.querySelectorAll(selector).forEach((el) => {
+    if (el.tagName !== "A") return;
+    el.setAttribute("href", url);
+    if (url !== "#") {
+      el.setAttribute("target", "_blank");
+      el.setAttribute("rel", "noopener noreferrer");
     }
   });
+}
+
+function applyVotingBoothLinks() {
+  applyExternalSiteLink("[data-voting-booth]", SITE.votingBoothUrl);
+}
+
+function applyReceiptLookupLinks() {
+  applyExternalSiteLink("[data-receipt-lookup]", SITE.receiptLookupUrl);
 }
 
 function applySocialLinks() {
@@ -120,6 +128,7 @@ function initCurrentNav() {
 
 document.addEventListener("DOMContentLoaded", () => {
   applyVotingBoothLinks();
+  applyReceiptLookupLinks();
   applySocialLinks();
   initNav();
   initReveal();

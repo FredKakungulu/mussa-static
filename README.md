@@ -13,7 +13,8 @@ This is the always-on public site for MUSSA. It stays live between elections so 
 | [https://mussaelections.com](https://mussaelections.com)           | This site                        |
 | [https://vote.mussaelections.com](https://vote.mussaelections.com) | MUSSA Online Voting System (OVS) |
 
-Voting booth links on this site go to `https://vote.mussaelections.com/auth/voter-login/`.
+Voting booth links go to `https://vote.mussaelections.com/auth/voter-login/`.
+Receipt checks go to `https://vote.mussaelections.com/vote/receipt/`.
 
 ## Pages
 
